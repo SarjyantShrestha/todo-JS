@@ -3,6 +3,10 @@ let todoInput = document.getElementById("todo-input");
 let container = document.querySelector(".container");
 let todoList;
 
+window.onload = function () {
+  todoInput.value = "";
+  searchInput.value = "";
+};
 function saveTodo() {
   localStorage.setItem("todos", JSON.stringify(todoList));
 }
@@ -71,6 +75,9 @@ function addTodo() {
   // Reset input field
   container.appendChild(newTodo);
   todoInput.value = "";
+
+  //for Search
+  todoList = document.querySelectorAll(".todo-list");
 }
 
 // Hit enter to add to the todo
