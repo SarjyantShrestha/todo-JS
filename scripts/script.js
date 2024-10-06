@@ -7,18 +7,17 @@ window.onload = function () {
   todoInput.value = "";
   searchInput.value = "";
 };
+
 function saveTodo() {
-  localStorage.setItem("todos", JSON.stringify(todoList));
+  let todos = [];
+  document.querySelectorAll(".todo-list").forEach((todo) => {
+    todos.push(todo.innerText);
+  });
+
+  localStorage.setItem("todos", JSON.stringify(todos));
 }
 
-function addTodo() {
-  let todoText = todoInput.value;
-
-  if (todoText === "") {
-    alert("Please enter a todo.");
-    return;
-  }
-
+function createTodo(todoText) {
   let newTodo = document.createElement("div");
   newTodo.classList.add("todo-list");
 
@@ -39,11 +38,13 @@ function addTodo() {
   editBtn.appendChild(editIcon);
   editBtn.id = "btn-edit";
 
-  //Delete function
+  // Delete function
   delBtn.addEventListener("click", () => {
     container.removeChild(newTodo);
+    saveTodo();
   });
 
+  // Edit function
   editBtn.addEventListener("click", () => {
     let editInput = document.createElement("input");
     editInput.classList.add("edit-input");
@@ -52,12 +53,14 @@ function addTodo() {
 
     //replace paragraph with input
     newTodo.replaceChild(editInput, todoParagraph);
+    saveTodo();
 
     //Enter to set new todo edit
     editInput.addEventListener("keydown", (e) => {
       if (e.key === "Enter") {
         todoParagraph.textContent = editInput.value;
         newTodo.replaceChild(todoParagraph, editInput);
+        saveTodo();
       }
     });
 
@@ -65,6 +68,7 @@ function addTodo() {
     editInput.addEventListener("blur", () => {
       todoParagraph.textContent = editInput.value;
       newTodo.replaceChild(todoParagraph, editInput);
+      saveTodo();
     });
   });
 
@@ -75,6 +79,18 @@ function addTodo() {
   // Reset input field
   container.appendChild(newTodo);
   todoInput.value = "";
+}
+
+function addTodo() {
+  let todoText = todoInput.value.trim();
+
+  if (todoText === "") {
+    alert("Please enter a todo.");
+    return;
+  }
+
+  createTodo(todoText);
+  saveTodo();
 
   //for Search
   todoList = document.querySelectorAll(".todo-list");
