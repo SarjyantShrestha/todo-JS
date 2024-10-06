@@ -6,13 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Minimal Todo</title>
     <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
 </head>
 
 <body>
     <h1>TODO: The Ultimate Checklist</h1>
+    <input id="todo-search" placeholder="search todos" />
     <div class="input-container">
         <input id="todo-input" placeholder="Get things done" />
-        <button id="btn-add">+</button>
+        <button id="btn-add">
+            <i class="fa-solid fa-plus"></i>
+        </button>
+    </div>
+
+    <div class="container">
     </div>
 
     <script src="scripts/script.js"> </script>
