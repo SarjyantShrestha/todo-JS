@@ -6,7 +6,15 @@ let todoList;
 window.onload = function () {
   todoInput.value = "";
   searchInput.value = "";
+  loadTodo();
 };
+
+function loadTodo() {
+  let todos = JSON.parse(localStorage.getItem("todos"));
+  todos.forEach((todo) => {
+    createTodo(todo);
+  });
+}
 
 function saveTodo() {
   let todos = [];
