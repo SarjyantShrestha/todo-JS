@@ -2,6 +2,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    font-family: "Roboto", sans-serif;
 }
 
 body {
@@ -9,11 +10,13 @@ body {
     justify-items: center;
     flex-direction: column;
     align-items: center;
+    padding: 3rem 20px;
 }
 
 h1 {
     margin: 4rem 0 4rem 0;
     text-align: center;
+    font-size: 3rem;
 }
 
 .input-container {
@@ -23,23 +26,21 @@ h1 {
     margin: 2rem 0;
     height: 100%;
     width: 100%;
-    max-width: 600px;
+    max-width: 700px;
 }
 
 .input-container input {
-    height: 100%;
     width: 100%;
     padding: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid #aaa;
     border-radius: 5px 0 0 5px;
     outline: none;
     font-size: 20px;
 }
 
 #btn-add {
-    font-size: 1rem;
     padding: 0.5em 1em;
-    border: 1px solid #ccc;
+    border: 1px solid #aaa;
     border-radius: 0 5px 5px 0;
     background-color: lightgreen;
     cursor: pointer;
@@ -49,7 +50,7 @@ h1 {
 #btn-del {
     font-size: 1rem;
     padding: 0.5em 1em;
-    border: 1px solid #ccc;
+    border: 1px solid #aaa;
     cursor: pointer;
     background-color: white;
 }
@@ -57,31 +58,41 @@ h1 {
 #btn-edit {
     font-size: 1rem;
     padding: 0.5em 1em;
-    border: 1px solid #ccc;
+    border: 1px solid #aaa;
     cursor: pointer;
     background-color: white;
-}
-
-.container {
-    width: 100%;
-    max-width: 600px;
 }
 
 .todo-list {
     display: flex;
     gap: 5px;
-    margin-bottom: 10px;
+    justify-content: space-between;
+    align-items: center;
     width: 100%;
+    max-width: 800px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
 }
 
+/* Todo text styling */
 #todo {
     flex: 1;
     padding: 0 1rem;
-    font-size: 20px;
+    font-size: 1.3rem;
     display: flex;
     align-items: center;
-    border: 1px solid #ccc;
-    width: 100%;
+    word-break: break-word;
+    /* Allows long words to break */
+    overflow-wrap: break-word;
+    /* Ensures that content wraps within the container */
+    white-space: normal;
+    /* Ensures that text wraps to a new line */
+    line-height: 1.5;
+    /* Adds some space between lines */
+    max-width: 100%;
+    /* Prevents text from expanding beyond its container */
 }
 
 .edit-input {
@@ -107,6 +118,6 @@ h1 {
 #todo-search::placeholder {
     color: #888;
     font-style: italic;
-    opacity: 1;
+    opacity: 0.5;
     text-align: center;
 }

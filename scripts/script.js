@@ -1,12 +1,14 @@
 let addBtn = document.getElementById("btn-add");
 let todoInput = document.getElementById("todo-input");
-let container = document.querySelector(".container");
+// let container = document.querySelector(".container");
 let todoList;
 
 window.onload = function () {
   todoInput.value = "";
   searchInput.value = "";
+  todoInput.focus();
   loadTodo();
+  todoList = document.querySelectorAll(".todo-list");
 };
 
 function loadTodo() {
@@ -17,6 +19,7 @@ function loadTodo() {
 }
 
 function saveTodo() {
+  // Necessary to define todos inside this function otherwise the todos will stack up.
   let todos = [];
   document.querySelectorAll(".todo-list").forEach((todo) => {
     todos.push(todo.innerText);
@@ -48,7 +51,7 @@ function createTodo(todoText) {
 
   // Delete function
   delBtn.addEventListener("click", () => {
-    container.removeChild(newTodo);
+    document.body.removeChild(newTodo);
     saveTodo();
   });
 
@@ -61,6 +64,7 @@ function createTodo(todoText) {
 
     //replace paragraph with input
     newTodo.replaceChild(editInput, todoParagraph);
+    editInput.focus(); // this also fixed a bug where the todo gets blank when clicking on edit then refreshing the page
     saveTodo();
 
     //Enter to set new todo edit
@@ -84,8 +88,8 @@ function createTodo(todoText) {
   newTodo.appendChild(delBtn);
   newTodo.appendChild(editBtn);
 
+  document.body.appendChild(newTodo);
   // Reset input field
-  container.appendChild(newTodo);
   todoInput.value = "";
 }
 
