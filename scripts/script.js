@@ -3,6 +3,13 @@ let todoInput = document.getElementById("todo-input");
 // let container = document.querySelector(".container");
 let todoList;
 
+// Dark Mode Toggle for Switch
+document.querySelector(".switch input").addEventListener("click", () => {
+  setTimeout(() => {
+    document.body.classList.toggle("dark-mode");
+  }, );
+});
+
 window.onload = function () {
   todoInput.value = "";
   searchInput.value = "";
@@ -50,10 +57,10 @@ function createTodo(todoText) {
   editBtn.id = "btn-edit";
 
   // Delete function
-  delBtn.addEventListener("click", () => { 
-    newTodo.classList.add("fade-out");  
+  delBtn.addEventListener("click", () => {
+    newTodo.classList.add("fade-out");
     setTimeout(() => {
-      document.body.removeChild(newTodo); 
+      document.body.removeChild(newTodo);
       saveTodo();
     }, 100); // setted to 100ms to match the fade-out animation
   });
