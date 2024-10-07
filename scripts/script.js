@@ -3,6 +3,13 @@ let todoInput = document.getElementById("todo-input");
 // let container = document.querySelector(".container");
 let todoList;
 
+// Dark Mode Toggle for Switch
+document.querySelector(".switch input").addEventListener("click", () => {
+  setTimeout(() => {
+    document.body.classList.toggle("dark-mode");
+  }, );
+});
+
 window.onload = function () {
   todoInput.value = "";
   searchInput.value = "";
