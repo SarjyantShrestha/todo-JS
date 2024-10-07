@@ -51,8 +51,11 @@ function createTodo(todoText) {
 
   // Delete function
   delBtn.addEventListener("click", () => {
-    document.body.removeChild(newTodo);
-    saveTodo();
+    newTodo.classList.add("fade-out");
+    setTimeout(() => {
+      document.body.removeChild(newTodo);
+      saveTodo();
+    }, 100); // setted to 100ms to match the fade-out animation
   });
 
   // Edit function

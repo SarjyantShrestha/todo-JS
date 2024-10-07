@@ -121,3 +121,21 @@ h1 {
     opacity: 0.5;
     text-align: center;
 }
+
+
+/* fade in animation for list addition */
+@keyframes flip {
+    from { transform: rotateY(90deg); }
+    to { transform: rotateY(0); }
+  }
+  .todo-list { animation: flip 0.8s ease; }
+    
+  /* fade out animation for list deletion */
+    @keyframes fadeOut {
+      from { opacity: 1; }
+      to { opacity: 0; }
+    }
+      .todo-list.fade-out {  
+      animation: fadeOut 0.1s ease-out forwards;
+    }
+  
