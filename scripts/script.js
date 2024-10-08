@@ -20,7 +20,7 @@ window.onload = function () {
 function loadTodo() {
   let todos = JSON.parse(localStorage.getItem("todos"));
   todos.forEach((todo) => {
-    createTodo(todo);
+    createTodo(todo.text, todo.completed);
   });
 }
 
@@ -28,32 +28,45 @@ function saveTodo() {
   // Necessary to define todos inside this function otherwise the todos will stack up.
   let todos = [];
   document.querySelectorAll(".todo-list").forEach((todo) => {
-    todos.push(todo.innerText);
+    todos.push({
+      text: todo.querySelector("p").innerText,
+      completed: todo.classList.contains("todo-list-finish"),
+    });
   });
 
   localStorage.setItem("todos", JSON.stringify(todos));
 }
 
-function createTodo(todoText) {
+function createTodo(todoText, isCompleted = false) {
   let newTodo = document.createElement("div");
   newTodo.classList.add("todo-list");
+
+  let delBtn = document.createElement("button");
+  let editBtn = document.createElement("button");
 
   let todoParagraph = document.createElement("p");
   todoParagraph.id = "todo";
   todoParagraph.textContent = todoText;
 
   todoParagraph.addEventListener("click", () => {
-    if (todoParagraph.innerHTML.includes("<s>")) {
-      todoParagraph.innerHTML = todoParagraph.innerText;
-    } else {
-      todoParagraph.innerHTML = `<s>${todoParagraph.innerText}</s>`;
-    }
     newTodo.classList.toggle("todo-list-finish");
+
+    if (newTodo.classList.contains("todo-list-finish")) {
+      todoParagraph.innerHTML = `<s>${todoParagraph.innerText}</s>`;
+      editBtn.disabled = true;
+    } else {
+      todoParagraph.innerHTML = todoParagraph.innerText;
+      editBtn.disabled = false;
+    }
+
+    saveTodo();
   });
 
-  let delBtn = document.createElement("button");
-  let editBtn = document.createElement("button");
-
+  if (isCompleted) {
+    newTodo.classList.add("todo-list-finish");
+    todoParagraph.innerHTML = `<s>${todoParagraph.innerText}</s>`;
+    editBtn.disabled = true;
+  }
   let delIcon = document.createElement("i");
   delIcon.classList.add("fa-regular", "fa-trash-can");
   delBtn.appendChild(delIcon);
@@ -75,12 +88,9 @@ function createTodo(todoText) {
     let editInput = document.createElement("input");
     editInput.classList.add("edit-input");
     editInput.type = "text";
-    editInput.value = todoParagraph.textContent;
-
-    //replace paragraph with input
-    newTodo.replaceChild(editInput, todoParagraph);
+    editInput.value = todoParagraph.innerText;
+    newTodo.replaceChild(editInput, todoParagraph); //replace paragraph with input
     editInput.focus(); // this also fixed a bug where the todo gets blank when clicking on edit then refreshing the page
-    saveTodo();
 
     //Enter to set new todo edit
     editInput.addEventListener("keydown", (e) => {
