@@ -1,20 +1,19 @@
 let addBtn = document.getElementById("btn-add");
 let todoInput = document.getElementById("todo-input");
-// let container = document.querySelector(".container");
 let todoList;
 
 // Dark Mode Toggle for Switch
 document.querySelector(".switch input").addEventListener("click", () => {
   setTimeout(() => {
     document.body.classList.toggle("dark-mode");
-  }, );
+  });
 });
 
 window.onload = function () {
   todoInput.value = "";
   searchInput.value = "";
   todoInput.focus();
-  loadTodo();
+  loadTodo(); //load Todo first then update todoList. For search functionality to work.
   todoList = document.querySelectorAll(".todo-list");
 };
 
@@ -42,6 +41,15 @@ function createTodo(todoText) {
   let todoParagraph = document.createElement("p");
   todoParagraph.id = "todo";
   todoParagraph.textContent = todoText;
+
+  todoParagraph.addEventListener("click", () => {
+    if (todoParagraph.innerHTML.includes("<s>")) {
+      todoParagraph.innerHTML = todoParagraph.innerText;
+    } else {
+      todoParagraph.innerHTML = `<s>${todoParagraph.innerText}</s>`;
+    }
+    newTodo.classList.toggle("todo-list-finish");
+  });
 
   let delBtn = document.createElement("button");
   let editBtn = document.createElement("button");
