@@ -33,6 +33,7 @@ h1 {
     width: 100%;
     padding: 10px;
     border: 1px solid #aaa;
+    border-width: 1px 0 1px 1px;
     border-radius: 5px 0 0 5px;
     outline: none;
     font-size: 20px;
@@ -47,19 +48,12 @@ h1 {
     font-size: 20px;
 }
 
+#btn-edit,
 #btn-del {
-    font-size: 1rem;
-    padding: 0.5em 1em;
-    border: 1px solid #aaa;
+    font-size: 1.3rem;
+    padding: 0.5em 0.5em;
     cursor: pointer;
-    background-color: white;
-}
-
-#btn-edit {
-    font-size: 1rem;
-    padding: 0.5em 1em;
-    border: 1px solid #aaa;
-    cursor: pointer;
+    border: none;
     background-color: white;
 }
 
@@ -71,9 +65,10 @@ h1 {
     width: 100%;
     max-width: 800px;
     margin-bottom: 10px;
-    border: 1px solid #ccc;
+    border: 2px solid #aaa;
     border-radius: 5px;
     padding: 10px;
+    align-items: stretch;
 }
 
 .todo-list-finish {
@@ -84,10 +79,11 @@ h1 {
     width: 100%;
     max-width: 800px;
     margin-bottom: 10px;
-    border: 1px solid #ccc;
+    border: 2px solid #aaa;
     border-radius: 5px;
     padding: 10px;
     opacity: 0.5;
+    align-items: stretch;
 }
 
 /* Todo text styling */
@@ -126,7 +122,7 @@ h1 {
     font-size: 20px;
     padding: 5px;
     border: none;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid #aaa;
 }
 
 #todo-search::placeholder {
