@@ -113,7 +113,7 @@ h1 {
     padding: 5px;
     border: none;
     border-bottom: 1px solid #ccc;
-    border-radius: 15px;
+    background: #333;
 }
 
 #todo-search::placeholder {
@@ -129,9 +129,10 @@ h1 {
   }
   
   body.dark-mode {
-    background-color: #333;
+    background-color: #232323;
     color: #ffffff;
   }
+  
   
 /* The switch - the box around the slider */
 .switch {
@@ -184,3 +185,26 @@ h1 {
     transform: translateX(100%);
     box-shadow: inset 15px -4px 0px 15px #ffffff;
   }
+
+
+
+/* for dark mode in todo-search */
+#todo-search {
+  outline: none;
+  font-style: italic;
+  color: gray;
+  width: 200px;
+  font-size: 20px;
+  padding: 5px;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  background: #333; /* Default dark mode background */
+  transition: background-color 0.5s ease, color 0.5s ease; /* Add transition */
+
+}
+
+/* for light mode in todo-search */
+body:not(.dark-mode) #todo-search {
+  background: #fff; /* Light mode background */
+  color: black; /* Light mode text color */
+}
