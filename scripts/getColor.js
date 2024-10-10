@@ -23,12 +23,32 @@ const getRandom = async (arr) => {
   }
 };
 
+// const pastelColors = [
+//   "#FFD1DC", // Pastel Pink
+//   "#A7C6ED", // Pastel Blue
+//   "#B7E4D9", // Pastel Green
+//   "#F8E0A0", // Pastel Yellow
+//   "#E1C6E7", // Pastel Lavender
+//   "#FFB3B3", // Pastel Peach
+//   "#C6FFED", // Pastel Mint
+//   "#D8BFD8", // Pastel Purple
+//   "#FFB88C", // Pastel Orange
+//   "#D3D3D3", // Pastel Grey
+// ];
+//
+// let currentIndex = 0;
+
 const changeBgColor = async () => {
   let data = await fetchData();
   const colors = await getRandom(data);
 
-  console.log(colors);
-  document.body.style.background = `linear-gradient(to right, ${colors[0]}, ${colors[1]})`;
+  // Set the new gradient colors for cool transition effect
+  // document.body.style.setProperty("--color1", colors[0]);
+  // document.body.style.setProperty("--color2", colors[1]);
+
+  // Loop colors
+  // document.body.style.backgroundColor = pastelColors[currentIndex];
+  // currentIndex = (currentIndex + 1) % pastelColors.length;
 };
 
 document.getElementById("bg-change").addEventListener("click", changeBgColor);

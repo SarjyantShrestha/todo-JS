@@ -49,6 +49,13 @@ function createTodo(todoText, isCompleted = false) {
   todoParagraph.textContent = todoText;
 
   todoParagraph.addEventListener("click", () => {
+    //Animation
+    newTodo.classList.add("scale-animation");
+    // Remove the animation class after the animation ends
+    setTimeout(() => {
+      newTodo.classList.remove("scale-animation");
+    }, 300); // Duration should match the CSS animation time
+
     newTodo.classList.toggle("todo-list-finish");
 
     if (newTodo.classList.contains("todo-list-finish")) {

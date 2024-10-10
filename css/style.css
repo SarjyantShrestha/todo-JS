@@ -11,12 +11,14 @@ body {
     flex-direction: column;
     align-items: center;
     padding: 3rem 20px;
+    background-color: #d8d8ff;
 }
 
 h1 {
     margin: 4rem 0 4rem 0;
     text-align: center;
     font-size: 2.8rem;
+    color: #24273a;
 }
 
 .input-container {
@@ -32,29 +34,77 @@ h1 {
 #todo-input {
     width: 100%;
     padding: 10px;
-    border: 1px solid #aaa;
-    border-width: 1px 0 1px 1px;
+    border: 0px solid #aaa;
+    /* border-width: 1px 0 1px 1px; */
     border-radius: 5px 0 0 5px;
     outline: none;
     font-size: 20px;
+    background-color: #f3f3ff;
 }
 
 #btn-add {
     padding: 0.5em 1em;
-    border: 1px solid #aaa;
+    border: 0px solid #aaa;
     border-radius: 0 5px 5px 0;
     background-color: lightgreen;
     cursor: pointer;
     font-size: 20px;
 }
 
-#btn-edit,
+
 #btn-del {
     font-size: 1.3rem;
     padding: 0.5em 0.5em;
     cursor: pointer;
     border: none;
-    background-color: white;
+    background-color: transparent;
+    color: #ec8796;
+}
+
+
+#btn-del:hover {
+    font-size: 1.3rem;
+    padding: 0.5em 0.5em;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    color: #fb5068;
+}
+
+#btn-edit {
+    font-size: 1.3rem;
+    padding: 0.5em 0.5em;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    color: #7dc4e4;
+}
+
+#btn-edit:hover {
+    font-size: 1.3rem;
+    padding: 0.5em 0.5em;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    color: #26aff5;
+}
+
+@keyframes scale-up-down {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(0.99);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.scale-animation {
+    animation-name: scale-up-down;
 }
 
 .todo-list {
@@ -65,10 +115,15 @@ h1 {
     width: 100%;
     max-width: 800px;
     margin-bottom: 10px;
-    border: 1px solid #aaa;
-    border-radius: 5px;
+    border: 0px solid #aaa;
+    border-radius: 10px;
     padding: 5px;
     align-items: stretch;
+    background-color: #fdfbf5;
+    cursor: pointer;
+    /* background-color: #e5f3f9; */
+
+    animation-duration: 0.3s;
 }
 
 .todo-list-finish {
@@ -79,18 +134,22 @@ h1 {
     width: 100%;
     max-width: 800px;
     margin-bottom: 10px;
-    border: 1px solid #aaa;
-    border-radius: 5px;
+    border: 0px solid #aaa;
+    border-radius: 10px;
     padding: 5px;
     opacity: 0.5;
     align-items: stretch;
+    cursor: pointer;
 }
+
 
 /* Todo text styling */
 #todo {
     flex: 1;
+    color: #505261;
     padding: 0 1rem;
     font-size: 1.3rem;
+    font-weight: 600;
     display: flex;
     align-items: center;
     word-break: break-word;
@@ -100,9 +159,7 @@ h1 {
     white-space: normal;
     /* Ensures that text wraps to a new line */
     line-height: 1.5;
-    /* Adds some space between lines */
     max-width: 100%;
-    /* Prevents text from expanding beyond its container */
 }
 
 .edit-input {
@@ -117,12 +174,15 @@ h1 {
 #todo-search {
     outline: none;
     font-style: italic;
-    color: gray;
+    /* color: #24273a; */
     width: 200px;
     font-size: 20px;
     padding: 5px;
     border: none;
-    border-bottom: 1px solid #aaa;
+    border-radius: 10px;
+    /* border-bottom: 1px solid #aaa; */
+    background-color: #ececff;
+    color: #828299;
 }
 
 #todo-search::placeholder {
@@ -193,3 +253,23 @@ input:checked+.slider:before {
     transform: translateX(100%);
     box-shadow: inset 15px -4px 0px 15px #ffffff;
 }
+
+/* custom properties for gradient colors */
+/* @property --color1 { */
+/*     syntax: '<color>'; */
+/*     initial-value: #ffffff; */
+/*     inherits: false; */
+/* } */
+/**/
+/* @property --color2 { */
+/*     syntax: '<color>'; */
+/*     initial-value: #ffffff; */
+/*     inherits: false; */
+/* } */
+/**/
+/* body { */
+/*     background: linear-gradient(to right, var(--color1), var(--color2)); */
+/*     transition: --color1 1s, --color2 2s; */
+/* } */
+
+/* orange #f5a97f  green #a6da95 purple #a6da95 red #e09aa6 blue#7ba1e0 */
