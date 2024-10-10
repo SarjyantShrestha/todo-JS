@@ -123,7 +123,7 @@ h1 {
     text-align: center;
 }
 
-  /* dark mode */
+  /* dark mode issue*/
   body {
     transition: background-color 0.5s ease, color 0.5s ease;
   }
