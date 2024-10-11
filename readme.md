@@ -13,6 +13,8 @@ Simple todo list web application in vanilla JS. Heavily inspired theme by [Catpu
 
  ✅ User Friendly Interface
 
+ ✅ Completely Responsive
+
  ## Screenshots
 
 ![SS1](https://raw.githubusercontent.com/SarjyantShrestha/todo-JS/refs/heads/main/asset/ss/light.png)
