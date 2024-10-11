@@ -1,6 +1,8 @@
 # TODO List
 Simple todo list web application in vanilla JS. Heavily inspired theme by [Catpuccin](https://github.com/catppuccin/catppuccin).
 
+Demo [here](https://sarjyantshrestha.github.io/todo-JS/)
+
 **Features**:
 
  ✅ Local Storage Support
