@@ -2,13 +2,6 @@ let addBtn = document.getElementById("btn-add");
 let todoInput = document.getElementById("todo-input");
 let todoList;
 
-// Dark Mode Toggle for Switch
-document.querySelector(".switch input").addEventListener("click", () => {
-  setTimeout(() => {
-    document.body.classList.toggle("dark-mode");
-  });
-});
-
 window.onload = function () {
   todoInput.value = "";
   searchInput.value = "";
@@ -54,7 +47,7 @@ function createTodo(todoText, isCompleted = false) {
     // Remove the animation class after the animation ends
     setTimeout(() => {
       newTodo.classList.remove("scale-animation");
-    }, 300); // Duration should match the CSS animation time
+    }, 200); // Duration should match the CSS animation time
 
     newTodo.classList.toggle("todo-list-finish");
 

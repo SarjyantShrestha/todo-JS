@@ -15,10 +15,10 @@
 </head>
 
 <body>
-  <label class="switch">
-    <input type="checkbox" />
-    <span class="slider"></span>
-  </label>
+  <button id="theme-switch">
+    <img src="asset/light.png" width="80px" alt="light">
+    <img src="asset/dark.png" width="80px" alt="dark">
+  </button>
   <!-- <button id="bg-change">Magic</button> -->
   <h1>TODO: The Ultimate Checklist</h1>
   <input id="todo-search" placeholder="search todos" />
@@ -31,8 +31,9 @@
 
   <div class="container"></div>
 
-  <script src="scripts/getColor.js"></script>
+  <!-- <script src="scripts/getColor.js"></script> Experiment with dynamic colors -->
   <script src="scripts/script.js"></script>
+  <script src="scripts/darkmode.js" defer></script>
 </body>
 
 </html>
