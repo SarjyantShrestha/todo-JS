@@ -2,10 +2,15 @@
 Simple todo list web application in vanilla JS. Heavily inspired theme by [Catpuccin](https://github.com/catppuccin/catppuccin).
 
 **Features**:
+
  ✅ Local Storage Support
+
  ✅ Search todos
+
  ✅ Themes: Light and Dark
+
  ✅ User Friendly Interface
+
  ✅ Todo CRUD operation with completion check
 
  ---
