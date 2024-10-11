@@ -1,3 +1,31 @@
+:root {
+    --bg-color: #e0e0ff;
+    --heading: #24273a;
+    --search-bg: #ececff;
+    --input-bg: #f3f3ff;
+    --btn-add-bg: lightgreen;
+    --todo-list-bg: #fdfbf5;
+    --btn-del: #ec8796;
+    --btn-edit: #7dc4e4;
+    --todo-text: #505261;
+    --input-text: #24273a;
+    --search-text: #828299;
+}
+
+.darkmode {
+    --bg-color: #24273a;
+    --heading: #d8d8ff;
+    --search-bg: #3a3d4e;
+    --input-bg: #3a3d4e;
+    --btn-add-bg: lightgreen;
+    --todo-list-bg: #fdfbf5;
+    --btn-del: #ec8796;
+    --btn-edit: #7dc4e4;
+    --todo-text: #505261;
+    --input-text: #ffffff;
+    --search-text: #92939d;
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -11,12 +39,15 @@ body {
     flex-direction: column;
     align-items: center;
     padding: 3rem 20px;
+    background-color: var(--bg-color);
+    transition: background-color 0.2s ease, color 5s ease;
 }
 
 h1 {
-    margin: 4rem 0 4rem 0;
+    margin: 4rem 0 2rem 0;
     text-align: center;
-    font-size: 3rem;
+    font-size: 2.8rem;
+    color: var(--heading);
 }
 
 .input-container {
@@ -29,38 +60,80 @@ h1 {
     max-width: 700px;
 }
 
-.input-container input {
+#todo-input {
     width: 100%;
+    color: var(--input-text);
     padding: 10px;
-    border: 1px solid #aaa;
+    border: 0px solid #aaa;
     border-radius: 5px 0 0 5px;
     outline: none;
     font-size: 20px;
+    background-color: var(--input-bg);
 }
 
 #btn-add {
     padding: 0.5em 1em;
-    border: 1px solid #aaa;
+    border: 0px solid #aaa;
     border-radius: 0 5px 5px 0;
-    background-color: lightgreen;
+    background-color: var(--btn-add-bg);
     cursor: pointer;
     font-size: 20px;
 }
 
+
 #btn-del {
-    font-size: 1rem;
-    padding: 0.5em 1em;
-    border: 1px solid #aaa;
+    font-size: 1.3rem;
+    padding: 0.5em 0.5em;
     cursor: pointer;
-    background-color: white;
+    border: none;
+    background-color: transparent;
+    color: var(--btn-del);
+}
+
+
+#btn-del:hover {
+    font-size: 1.3rem;
+    padding: 0.5em 0.5em;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    color: #fb5068;
 }
 
 #btn-edit {
-    font-size: 1rem;
-    padding: 0.5em 1em;
-    border: 1px solid #aaa;
+    font-size: 1.3rem;
+    padding: 0.5em 0.5em;
     cursor: pointer;
-    background-color: white;
+    border: none;
+    background-color: transparent;
+    color: var(--btn-edit);
+}
+
+#btn-edit:hover {
+    font-size: 1.3rem;
+    padding: 0.5em 0.5em;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    color: #26aff5;
+}
+
+@keyframes scale-up-down {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(0.99);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.scale-animation {
+    animation-name: scale-up-down;
 }
 
 .todo-list {
@@ -69,18 +142,43 @@ h1 {
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    max-width: 800px;
+    max-width: 700px;
     margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 10px;
+    border: 0px solid #aaa;
+    border-radius: 10px;
+    padding: 5px;
+    align-items: stretch;
+    background-color: var(--todo-list-bg);
+    cursor: pointer;
+    /* background-color: #e5f3f9; */
+
+    animation-duration: 0.2s;
 }
+
+.todo-list-finish {
+    display: flex;
+    gap: 5px;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 700px;
+    margin-bottom: 10px;
+    border: 0px solid #aaa;
+    border-radius: 10px;
+    padding: 5px;
+    opacity: 0.5;
+    align-items: stretch;
+    cursor: pointer;
+}
+
 
 /* Todo text styling */
 #todo {
     flex: 1;
+    color: var(--todo-text);
     padding: 0 1rem;
     font-size: 1.3rem;
+    font-weight: 600;
     display: flex;
     align-items: center;
     word-break: break-word;
@@ -90,9 +188,7 @@ h1 {
     white-space: normal;
     /* Ensures that text wraps to a new line */
     line-height: 1.5;
-    /* Adds some space between lines */
     max-width: 100%;
-    /* Prevents text from expanding beyond its container */
 }
 
 .edit-input {
@@ -106,14 +202,16 @@ h1 {
 
 #todo-search {
     outline: none;
+    margin-bottom: 1rem;
     font-style: italic;
-    color: gray;
+    /* color: #24273a; */
     width: 200px;
     font-size: 20px;
     padding: 5px;
     border: none;
-    border-bottom: 1px solid #ccc;
-    background: #333;
+    border-radius: 10px;
+    background-color: var(--search-bg);
+    color: var(--search-text);
 }
 
 #todo-search::placeholder {
@@ -123,88 +221,50 @@ h1 {
     text-align: center;
 }
 
-  /* dark mode issue*/
-  body {
-    transition: background-color 0.5s ease, color 0.5s ease;
-  }
-  
-  body.dark-mode {
-    background-color: #232323;
-    color: #ffffff;
-  }
-  
-  
-/* The switch - the box around the slider */
-.switch {
-    font-size: 17px;
-    position: relative;
-    display: inline-block;
-    width: 3.5em;
-    height: 2em;
-  }
-  
-  /* Hide default HTML checkbox */
-  .switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-  }
-  
-  /* The slider */
-  .slider {
-    --background: #120334;
-    position: absolute;
+#theme-switch {
+    margin-top: 50px;
+    margin-bottom: 20px;
+    height: 5px;
+    width: 5px;
+    padding: 0;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* position: fixed; */
+    /* top: 100px; */
+    /* right: 100px; */
     cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: var(--background);
-    transition: .5s;
-    border-radius: 30px;
-  }
-  
-  .slider:before {
-    position: absolute;
-    content: "";
-    height: 1.4em;
-    width: 1.4em;
-    border-radius: 50%;
-    left: 10%;
-    bottom: 15%;
-    box-shadow: inset 8px -4px 0px 0px #ffffff;
-    background: var(--background);
-    transition: .5s;
-  }
-  
-  input:checked + .slider {
-    background-color: #000000;
-  }
-  
-  input:checked + .slider:before {
-    transform: translateX(100%);
-    box-shadow: inset 15px -4px 0px 15px #ffffff;
-  }
-
-
-
-/* for dark mode in todo-search */
-#todo-search {
-  outline: none;
-  font-style: italic;
-  color: gray;
-  width: 200px;
-  font-size: 20px;
-  padding: 5px;
-  border: none;
-  border-bottom: 1px solid #ccc;
-  background: #333; /* Default dark mode background */
-  transition: background-color 0.5s ease, color 0.5s ease; /* Add transition */
-
 }
 
-/* for light mode in todo-search */
-body:not(.dark-mode) #todo-search {
-  background: #fff; /* Light mode background */
-  color: black; /* Light mode text color */
+#theme-switch img:last-child {
+    display: none;
 }
+
+.darkmode #theme-switch img:first-child {
+    display: none;
+}
+
+.darkmode #theme-switch img:last-child {
+    display: block;
+}
+
+/* custom properties for gradient colors */
+/* @property --color1 { */
+/*     syntax: '<color>'; */
+/*     initial-value: #ffffff; */
+/*     inherits: false; */
+/* } */
+/**/
+/* @property --color2 { */
+/*     syntax: '<color>'; */
+/*     initial-value: #ffffff; */
+/*     inherits: false; */
+/* } */
+/**/
+/* body { */
+/*     background: linear-gradient(to right, var(--color1), var(--color2)); */
+/*     transition: --color1 1s, --color2 2s; */
+/* } */
+
+/* orange #f5a97f  green #a6da95 purple #a6da95 red #e09aa6 blue#7ba1e0 */
